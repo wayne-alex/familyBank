@@ -1,0 +1,91 @@
+{% extends 'base1.html'  %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="main-panel">
+    <div class="container">
+    <br/>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+  </div>
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">
+    <span class="page-title-icon bg-gradient-primary text-white me-2">
+        <i class="mdi mdi-currency-usd"></i>
+    </span> Loans
+            </h3>
+
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <span></span>Overview <i
+                            class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        {% if apply %}
+        <div class="col-md-12 stretch-card grid-margin">
+
+            <div class="card bg-gradient-success card-img-holder text-white">
+                <div class="card-body">
+                    <img src="{% static 'Login/stylesheets/assets/images/dashboard/circle.svg' %}"
+                         class="card-img-absolute" alt="circle-image"/>
+                    <h4 class="font-weight-normal mb-3">You currently do not qualify for a Loan <i
+                            class="mdi mdi-coin mdi-24px float-right"></i>
+                    </h4>
+                    <h4 class="mb-5">Current Loan</h4>
+                    <h2 class="mb-5">KES {{loan_balance}}</h2>
+                    <h6 class="card-text">Due Date: {{apply.date_due}}</h6>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-md-12 stretch-card grid-margin">
+
+            <div class="card bg-gradient-danger card-img-holder text-white">
+                <div class="card-body">
+                    <img src="{% static 'Login/stylesheets/assets/images/dashboard/circle.svg' %}"
+                         class="card-img-absolute" alt="circle-image"/>
+                    <h4 class="font-weight-normal mb-3">Available Loan <i
+                            class="mdi mdi-coin mdi-24px float-right"></i>
+                    </h4>
+                    <h2 class="mb-5">KES {{loan.loan}}</h2>
+                    <h6 class="card-text">Amount you can borrow</h6>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h5 class="card-header">Loan Application</h5>
+            <div class="card-body">
+                <p class="card-text">Enter Amount you want to apply</p>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">KES</span>
+                        <input type="number" class="form-control" placeholder="Loan Application" aria-label="Username"
+                               name="loan"
+                               aria-describedby="basic-addon1">
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+
+{% endblock %}
