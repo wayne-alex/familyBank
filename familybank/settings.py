@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-#38px&9^udirtyc0wom^#74eg^f@$z$(f60wl$7k^%25$=amzb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-# ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -74,16 +73,15 @@ WSGI_APPLICATION = 'familybank.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRES_DATABASE'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('POSTGRES_HOST'),
-        'PORT': '5432',  # Default PostgreSQL port
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': config('POSTGRES_DATABASE'),
+    #     'USER': config('POSTGRES_USER'),
+    #     'PASSWORD': config('POSTGRES_PASSWORD'),
+    #     'HOST': config('POSTGRES_HOST'),
+    #     'PORT': '5432',  # Default PostgreSQL port
+    # }
 }
 
 # Password validation
