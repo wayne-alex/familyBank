@@ -94,6 +94,6 @@ class Notification(models.Model):
     ])
     username = models.CharField(max_length=20)
     sender = models.CharField(max_length=20)
-    message = models.CharField(max_length=250)
+    message = models.CharField(max_length=1000)
     subject = models.CharField(max_length=250, default="Welcome Message")
     read = models.BooleanField(default=0)
